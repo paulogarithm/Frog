@@ -6,10 +6,9 @@
 */
 
 #ifndef COLOR_H_
-#define COLOR_H_
+    #define COLOR_H_
 
-enum color_enum
-{
+enum color_enum {
     Reset = 0,
     Bold,
     Underline,

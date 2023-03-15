@@ -6,10 +6,9 @@
 */
 
 #ifndef FROG_H_
-#define FROG_H_
+    #define FROG_H_
 
-typedef struct
-{
+typedef struct {
     char *name;
     char *type;
 
@@ -18,8 +17,7 @@ typedef struct
     int boolean;
 } variable_t;
 
-typedef struct
-{
+typedef struct {
     variable_t **variables;
 } frog_t;
 

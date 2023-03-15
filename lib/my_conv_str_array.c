@@ -20,23 +20,19 @@ char **replace_quotes(char **array)
     char *tmp = "";
     int isquote = 0;
     new[0] = NULL;
-    while (array[n] != NULL)
-    {
+    while (array[n] != NULL) {
         if (array[n][0] == '"')
             isquote = 1;
         if (isquote)
             tmp = my_addstr(tmp, my_addstr(array[n], " "));
-        else
-        {
+        else {
             new = my_addin_array(new, my_cutstr(tmp, 1, my_countstr(tmp) - 2));
             tmp = "";
             new = my_addin_array(new, array[n]);
-        }
-        if (array[n][my_countstr(array[n]) - 1] == '"')
+        } if (array[n][my_countstr(array[n]) - 1] == '"')
             isquote = 0;
         n += 1;
-    }
-    if (my_countstr(tmp) != 0)
+    } if (my_countstr(tmp) != 0)
         new = my_addin_array(new, my_cutstr(tmp, 0, my_countstr(tmp) - 1));
     return new;
 }

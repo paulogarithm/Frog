@@ -15,6 +15,9 @@ int my_countarray(char **array);
 
 void set_variable(frog_t *frog, char **line);
 void show_variables(frog_t *frog);
+void native_print(frog_t *frog, char *line);
+
+int beggins_with(char *str, char *beg);
 
 frog_t *setup_frog(void)
 {
@@ -34,8 +37,9 @@ void read_file(char **parcing)
         line = my_conv_str_array(parcing[n]);
         if (my_countarray(line) == 0)
             continue;
-        if (my_compstr("set", line[0]))
+        if (my_compstr(line[0], "set"))
             set_variable(frog, line);
+        if (beggins_with(line[0], "print"))
+            native_print(frog, parcing[n]);
     }
-    show_variables(frog);
 }

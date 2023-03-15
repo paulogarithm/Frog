@@ -14,23 +14,9 @@ char **my_array_parcing(char *file_path);
 char *my_parcing(char *path);
 
 int my_compstr(char *a, char *b);
-int my_countstr(char *str);
-char *my_cutstr(char *str, int a, int b);
 
 char *get_type(char *val);
 void read_file(char **parcing);
-
-int finish_with(char *str, char *end)
-{
-    int c_str = my_countstr(str);
-    int c_end = my_countstr(end);
-
-    if (c_str < c_end)
-        return 0;
-    if (my_compstr(my_cutstr(str, c_str - c_end, c_str), end))
-        return 1;
-    return 0;
-}
 
 int display_help(void)
 {

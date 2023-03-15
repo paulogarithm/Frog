@@ -12,8 +12,7 @@ int my_findinstr(char *src, char *fnd)
     int s = 0;
     int f = 0;
 
-    while (src[s] != '\0')
-    {
+    while (src[s] != '\0') {
         if (src[s] == fnd[f])
             f += 1;
         else

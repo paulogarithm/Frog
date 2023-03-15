@@ -16,13 +16,11 @@ char *my_addstr(char *first, char *second)
     int f = 0;
     int s = 0;
 
-    while (first[f])
-    {
+    while (first[f]) {
         str[f] = first[f];
         f += 1;
     }
-    while (second[s])
-    {
+    while (second[s]) {
         str[f + s] = second[s];
         s += 1;
     }

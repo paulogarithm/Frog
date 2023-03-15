@@ -8,16 +8,22 @@
 
 ## ---------- ##
 
-BIN		= frog
-
-INC		=
+VAR 	= src/variables/
+NAT 	= src/native/
+USE 	= src/usefull/
 
 SRC		= src/main.c\
-		src/variables/variables_get.c\
-		src/variables/variables_set.c\
+		$(VAR)variables_get.c\
+		$(VAR)variables_set.c\
+		$(NAT)native_functions.c\
+		$(USE)usefull_string.c\
 		src/frog_types.c\
 		src/read_file.c\
 		src/addin.c\
+
+BIN		= frog
+
+INC		=
 
 ## ---------- ##
 

@@ -1,6 +1,6 @@
 #!frog
 
-set alexuwu = 3
-set alexuwu = "trop bg"
+set pol = "edouard"
+set pol = 8
 
-print(uwu)
+print(pol, 9)

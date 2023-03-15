@@ -26,10 +26,12 @@ variable_t **push_variables(variable_t **variables, int index)
 
 void show_variables(frog_t *frog)
 {
+    printf("\n=====================\n");
     printf("List of variables:\n");
     for (int n = 0; frog->variables[n] != NULL; n ++)
         printf("[%s]\t%s\n",
         frog->variables[n]->type, frog->variables[n]->name);
+    printf("\n=====================\n");
 }
 
 int get_variable_index(frog_t *frog, char *name)
@@ -48,7 +50,7 @@ variable_t *get_variable(frog_t *frog, char *name)
     return NULL;
 }
 
-char *get_string_value(variable_t *var)
+char *get_variable_string(variable_t *var)
 {
     if (my_compstr(var->type, "boolean"))
         return var->boolean ? "true" : "false";

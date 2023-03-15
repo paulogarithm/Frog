@@ -16,7 +16,7 @@ int my_countarray(char **array);
 char *get_type(char *val);
 variable_t **addin_var(variable_t **list, variable_t *button);
 variable_t *get_variable(frog_t *frog, char *name);
-char *get_string_value(variable_t *var);
+char *get_variable_string(variable_t *var);
 void burn_variable(frog_t *frog, char *name);
 
 void add_variable(frog_t *frog, char *key, char *type, char *value)
@@ -47,10 +47,9 @@ void set_variable(frog_t *frog, char **line)
     value = line[3];
     type = get_type(value);
     maybe_var = get_variable(frog, value);
-
     if (maybe_var != NULL) {
         type = maybe_var->type;
-        value = get_string_value(maybe_var);
+        value = get_variable_string(maybe_var);
     } if (my_compstr(type, "null"))
         return;
     burn_variable(frog, key);
