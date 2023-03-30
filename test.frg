@@ -1,6 +1,12 @@
 #!frog
 
-set pol = "edouard"
-set pol = 8
+function test
+    print(bite)
+end
 
-print(pol, 9)
+function main (ac, av)
+    InitScreen(800, 600, "Hello")
+    a = 69 + 1
+    print(a)
+    test()
+end

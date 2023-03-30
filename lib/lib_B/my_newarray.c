@@ -1,0 +1,22 @@
+/*
+** EPITECH PROJECT, 2023
+** New_Frog
+** File description:
+** my_newarray
+*/
+
+#include <stdlib.h>
+
+char *my_newstr(char *str);
+int my_arraylen(char **array);
+
+char **my_newarray(char **array)
+{
+    int len = my_arraylen(array);
+    char **dup = malloc(sizeof(char *) * (len + 1));
+
+    for (int n = 0; array[n] != NULL; n++)
+        dup[n] = my_newstr(array[n]);
+    dup[len] = NULL;
+    return dup;
+}

@@ -1,57 +1,88 @@
 /*
-** Paul PARISOT, 2022
+** EPITECH PROJECT, 2022
 ** my_lib
 ** File description:
 ** main
 */
 
-#include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-#include "../include/color.h"
+#include "polib.h"
+#include "frog.h"
 
-char **my_array_parcing(char *file_path);
-char *my_parcing(char *path);
+void read_it(frog_t *frog, int beg);
+char *calculus(const char *line_const, frog_t *frog);
+void free_the_frog(frog_t *frog);
+void set_variable(frog_t *frog, char **line);
 
-int my_compstr(char *a, char *b);
+void local_function(frog_t *frog, char *name);
+void is_it_function(frog_t *frog, char *line_template);
+void native_condition(frog_t *frog, char **array_template, int *n);
 
-char *get_type(char *val);
-void read_file(char **parcing);
-
-int display_help(void)
+int find_first_end(char **array, int begin)
 {
-    char *parcing = my_parcing("assets/frog.txt");
+    char *norm = malloc(sizeof(char));
+    int n;
 
-    printf("%s%s%s\n",
-    COL[Green], parcing != NULL ? parcing : "", COL[Reset]);
-    printf("[%s%sFrog%s 1.0] Copyright (C) 2023 by paulogarithm.\n\n",
-    COL[Green], COL[Bold], COL[Reset]);
-    printf("Using gcc (GCC) 12.2.1 20221121 (Red Hat 12.2.1-4), on linux.\n");
-    printf("This program comes with ABSOLUTELY NO WARRANTY. For details,\n");
-    printf("check the website https://www.gnu.org/licenses.\n");
-    printf("FrogCode is an open-source programming language, developped\n");
-    printf("in C, inspired by Lua.\n\n");
-    printf("Usage\n");
-    printf("\tfrog [option] files...\n\n");
+    for (n = begin; array[n] != NULL; n ++) {
+        free(norm);
+        norm = my_normalize(array[n]);
+        if (my_compstr(norm, "end"))
+            break;
+    }
+    free(norm);
+    return n;
+}
 
+int rooter(frog_t *frog, char **line, int *n)
+{
+    if (my_compstr(line[0], "end"))
+        return 1;
+    if (my_arraylen(line) >= 3 && my_compstr(line[1], "="))
+        set_variable(frog, line);
+    if (my_arraylen(line) >= 3 && my_compstr(line[0], "if")
+    && my_compstr(line[my_arraylen(line) - 1], "then"))
+        native_condition(frog, line, n);
+    is_it_function(frog, frog->array[*n]);
     return 0;
+}
+
+void read_it(frog_t *frog, int beg)
+{
+    int len = my_arraylen(frog->array);
+    char **line = malloc(sizeof(char *));
+
+    line[0] = NULL;
+    for (int n = beg; n < len; n ++) {
+        free_ception(line);
+        line = my_str_array(frog->array[n]);
+        if (line == NULL || !my_arraylen(line))
+            continue;
+        if (rooter(frog, line, &n))
+            break;
+    }
+    free_ception(line);
+}
+
+frog_t *setup_frog(char **av)
+{
+    frog_t *frog = malloc(sizeof(frog_t));
+
+    frog->array = my_array_parsing(av[1]);
+    frog->varibales = malloc(sizeof(variable_t));
+    frog->null_ptr = malloc(sizeof(char));
+    frog->varibales[0] = NULL;
+    return frog;
 }
 
 int main(int ac, char **av)
 {
-    char **parcing;
+    frog_t *frog;
 
-    if (ac == 2 && my_compstr(av[1], "-h"))
-        return display_help();
     if (ac != 2)
-        return 69 + 0 * printf("Frog::%s[E]%s missing input files.\n",
-        COL[Red], COL[Reset]);
-
-    parcing = my_array_parcing(av[1]);
-    if (parcing == NULL)
-        return 69 + 0 * printf("Frog::%s[E]%s error while reading file.\n",
-        COL[Red], COL[Reset]);
-
-    read_file(parcing);
+        return 69;
+    frog = setup_frog(av);
+    local_function(frog, "main");
+    free_the_frog(frog);
     return 0;
 }
