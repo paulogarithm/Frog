@@ -45,6 +45,7 @@ variable_t *create_var(frog_t *frog, char *name, char *value)
             return my_puterr("Malloc Failure");
         var->name = my_newstr(name);
         var->string = NULL;
+        var->from = frog->current_function;
     }
     auto_setup_var(var, value);
 

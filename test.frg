@@ -1,14 +1,17 @@
 #!frog
 
 function test
-
+    a = 2
+    print("-TEST")
+    print(a)
+    print(b)
+    print("-END")
 end
 
 function main
-    a = 0
-
-    while a < 10 do
-        a = a + 0.5
-        print(a)
-    end
+    a = 1
+    b = 2
+    print(a & "and" & b)
+    test()
+    print(a & "and" & b)
 end

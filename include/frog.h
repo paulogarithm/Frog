@@ -18,6 +18,7 @@ enum type {
 typedef struct {
     int type;
     char *name;
+    char *from;
 
     double number;
     int boolean;
@@ -30,6 +31,7 @@ typedef struct {
     variable_t **varibales;
     char *null_ptr;
     char **array;
+    char *current_function;
 } frog_t;
 
 #endif /* !FROG_H_ */

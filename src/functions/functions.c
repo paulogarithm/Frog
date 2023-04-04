@@ -16,10 +16,14 @@ void local_function(frog_t *frog, char *name);
 int find_function(char **array, char *name)
 {
     int len = my_arraylen(array);
+    char **split = NULL;
 
     for (int n = 0; n < len; n++) {
-        char **split = my_str_array(array[n]);
-
+        split = my_str_array(array[n]);
+        if (split[0] == NULL) {
+            free_ception(split);
+            continue;
+        }
         if (my_compstr(split[0], "function") && my_arraylen(split) >= 2
         && my_compstr(split[1], name)) {
             free_ception(split);
@@ -27,7 +31,6 @@ int find_function(char **array, char *name)
         }
         free_ception(split);
     }
-
     return -1;
 }
 
@@ -35,11 +38,14 @@ void execute_function(frog_t *frog, char **array)
 {
     char **args = my_newarray(array);
     char *name = my_newstr(args[0]);
+    char *old_function;
 
     crush_array(&args, 0);
     if (native_function(frog, name, args))
         return free(name);
+    old_function = frog->current_function;
     local_function(frog, name);
+    frog->current_function = old_function;
 
     free(name);
     free_ception(args);

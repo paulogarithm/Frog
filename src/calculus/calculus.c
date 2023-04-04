@@ -80,7 +80,6 @@ char *calculus(char *line_const, frog_t *frog)
     array = replace_variables(array, frog, &line);
     if (array == NULL)
         return NULL;
-
     array = cmon_do_math_a(array, frog);
     array = cmon_do_math_b(array, frog);
     array = cmon_do_math_c(array, frog);

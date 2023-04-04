@@ -49,7 +49,6 @@ char **my_strsplit(char *str, char *correct)
     }
     cut = my_cutstr(str, old, my_strlen(str));
     do_cut(&array, &cut, 0, &old);
-    ignore_quotes(&array);
     return array;
 }
 

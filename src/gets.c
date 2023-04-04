@@ -13,7 +13,8 @@
 variable_t *get_variable(frog_t *frog, char *name)
 {
     for (int n = 0; frog->varibales[n] != NULL; n ++) {
-        if (my_compstr(name, frog->varibales[n]->name))
+        if (my_compstr(name, frog->varibales[n]->name)
+        && my_compstr(frog->varibales[n]->from, frog->current_function))
             return frog->varibales[n];
     }
     return NULL;

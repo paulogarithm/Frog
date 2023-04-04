@@ -75,6 +75,7 @@ frog_t *setup_frog(char **av)
     frog->array = my_array_parsing(av[1]);
     frog->varibales = malloc(sizeof(variable_t));
     frog->null_ptr = malloc(sizeof(char));
+    frog->current_function = NULL;
     frog->varibales[0] = NULL;
     return frog;
 }
@@ -83,7 +84,7 @@ int main(int ac, char **av)
 {
     frog_t *frog;
 
-    if (ac != 2)
+    if (ac < 2)
         return 69;
     frog = setup_frog(av);
     local_function(frog, "main");

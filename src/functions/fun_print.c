@@ -11,18 +11,50 @@
 #include "polib.h"
 
 char *calculus(char *line_const, frog_t *frog);
+int get_type(char *str);
 
 void better_number(char **str)
 {
     double nb;
+    char **array = NULL;
 
-    if (!my_isdouble(*str))
+    if (*str == NULL)
         return;
-    nb = my_str_double(*str);
-    if ((nb - (int) nb) != 0)
-        return;
+    array = my_str_array(*str);
     free(*str);
-    *str = my_nb_str((int) nb);
+    for (int n = 0; array[n] != NULL; n ++) {
+        if (!my_isdouble(array[n]))
+            continue;
+        nb = my_str_double(array[n]);
+        if ((nb - (int) nb) != 0)
+            continue;
+        free(array[n]);
+        array[n] = my_nb_str((int) nb);
+    }
+    *str = my_strjoin(array, " ");
+    free_ception(array);
+}
+
+void rem_quote(char **str)
+{
+    char *res = NULL;
+    char **array = NULL;
+
+    if (*str == NULL)
+        return;
+    array = my_str_array(*str);
+    free(*str);
+    for (int n = 0; array[n] != NULL; n ++) {
+        if (get_type(array[n]) != string)
+            continue;
+        array[n][0] = ' ';
+        array[n][my_strlen(array[n]) - 1] = ' ';
+        res = my_normalize(array[n]);
+        free(array[n]);
+        array[n] = res;
+    }
+    *str = my_strjoin(array, " ");
+    free_ception(array);
 }
 
 void native_print(frog_t *frog, char **array)
@@ -37,6 +69,7 @@ void native_print(frog_t *frog, char **array)
     line = my_strjoin(tmp, " ");
     cal = calculus(line, frog);
     better_number(&cal);
+    rem_quote(&cal);
     my_printf("%s\n", cal != NULL ? cal : "\033[90mnull\033[m");
     free_ception(tmp);
     free(line);

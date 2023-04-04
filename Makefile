@@ -12,7 +12,7 @@ FUN 	= src/functions/
 
 BIN		= frog
 
-INC		=
+INC		= -lm\
 
 SRC		= src/main.c\
 		src/gets.c\
