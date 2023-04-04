@@ -1,7 +1,7 @@
 #!frog
 
-function test a b
-    
+function test
+
 end
 
 function main
