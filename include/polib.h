@@ -26,6 +26,7 @@ int my_nblen(int nb);
 int my_putchar(char c);
 int my_putstr(char *str);
 int my_str_nb(char *str);
+int my_isdouble(char *str);
 int my_countchar(char *str, char c);
 void my_replacechar(char *str, char obj, char rep);
 void my_revstr(char *str);
@@ -33,6 +34,7 @@ void my_strcpy(char *dest, char *src);
 void my_strup(char *str);
 void my_strlow(char *str);
 void my_cleanchar(char *str, char c);
+double my_str_double(char *str);
 void *my_puterr(char *str);
 
 //-- LIB B --//
@@ -63,6 +65,8 @@ char *my_newstr(char *text);
 char *my_strjoin(char **array, char *join);
 /* Return a [string] with nice little formatting */
 char *my_disparray(char **array);
+/* Float to number */
+char *my_double_str(double d);
 /* Normalize a string */
 char *my_normalize(char *str);
 

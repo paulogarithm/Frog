@@ -19,6 +19,7 @@ SRC		= src/main.c\
 		src/free.c\
 		src/variables.c\
 		src/condition.c\
+		src/loops.c\
 		\
 		$(CAL)calculus.c\
 		$(CAL)math_a.c\
@@ -53,6 +54,7 @@ LIB 	= $(LIBA)my_strlen.c\
 		$(LIBA)my_strlowup.c\
 		$(LIBA)my_countchar.c\
 		$(LIBA)my_cleanchar.c\
+		$(LIBA)my_str_double.c\
 		\
 		$(LIBB)my_addchars.c\
 		$(LIBB)my_array.c\
@@ -64,6 +66,7 @@ LIB 	= $(LIBA)my_strlen.c\
 		$(LIBB)my_newarray.c\
 		$(LIBB)my_visualarray.c\
 		$(LIBB)my_normalize.c\
+		$(LIBB)my_double_str.c\
 		\
 		$(LIBC)my_printf.c\
 		$(LIBC)my_parsing.c\

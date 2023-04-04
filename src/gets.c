@@ -25,7 +25,7 @@ char *get_textvalue(variable_t *var)
         return NULL;
     switch (var->type) {
         case number:
-        return my_nb_str(var->number);
+        return my_double_str(var->number);
 
         case string:
         return my_newstr(var->string);
@@ -41,7 +41,7 @@ char *get_textvalue(variable_t *var)
 
 int get_type(char *str)
 {
-    int nb = my_str_nb(str);
+    double nb = my_str_double(str);
 
     if (str[0] == '"' && str[my_strlen(str) == '"'])
         return string;
@@ -52,9 +52,9 @@ int get_type(char *str)
     return null;
 }
 
-int get_numbervalue(char *str, frog_t *frog)
+double get_numbervalue(char *str, frog_t *frog)
 {
-    int nb = my_str_nb(str);
+    double nb = my_str_double(str);
     variable_t *var = get_variable(frog, str);
 
     if (nb)
@@ -62,7 +62,7 @@ int get_numbervalue(char *str, frog_t *frog)
     if (var == NULL)
         return 0;
     if (var->type == boolean)
-        return var->boolean;
+        return (double) var->boolean;
     if (var->type == number)
         return var->number;
     return 0;

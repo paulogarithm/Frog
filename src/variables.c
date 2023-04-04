@@ -21,7 +21,7 @@ void auto_setup_var(variable_t *var, char *str)
     var->type = get_type(str);
     switch (var->type) {
         case number:
-        var->number = my_str_nb(str);
+        var->number = my_str_double(str);
         break;
         case boolean:
         var->boolean = my_compstr(str, "true");

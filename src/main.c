@@ -18,6 +18,7 @@ void set_variable(frog_t *frog, char **line);
 void local_function(frog_t *frog, char *name);
 void is_it_function(frog_t *frog, char *line_template);
 void native_condition(frog_t *frog, char **array_template, int *n);
+void native_while(frog_t *frog, char **array_template, int *n);
 
 int find_first_end(char **array, int begin)
 {
@@ -43,6 +44,9 @@ int rooter(frog_t *frog, char **line, int *n)
     if (my_arraylen(line) >= 3 && my_compstr(line[0], "if")
     && my_compstr(line[my_arraylen(line) - 1], "then"))
         native_condition(frog, line, n);
+    if (my_arraylen(line) >= 3 && my_compstr(line[0], "while")
+    && my_compstr(line[my_arraylen(line) - 1], "do"))
+        native_while(frog, line, n);
     is_it_function(frog, frog->array[*n]);
     return 0;
 }

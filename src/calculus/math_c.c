@@ -10,12 +10,12 @@
 #include "polib.h"
 #include "frog.h"
 
-int get_numbervalue(char *str, frog_t *frog);
+double get_numbervalue(char *str, frog_t *frog);
 
 static char *process_calculus_c(char **array, int n, frog_t *frog)
 {
-    int a = get_numbervalue(array[n - 1], frog);
-    int b = get_numbervalue(array[n + 1], frog);
+    double a = get_numbervalue(array[n - 1], frog);
+    double b = get_numbervalue(array[n + 1], frog);
 
     if (my_compstr(array[n], ">="))
         return a >= b ? "true" : "false";

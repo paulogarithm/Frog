@@ -12,6 +12,19 @@
 
 char *calculus(char *line_const, frog_t *frog);
 
+void better_number(char **str)
+{
+    double nb;
+
+    if (!my_isdouble(*str))
+        return;
+    nb = my_str_double(*str);
+    if ((nb - (int) nb) != 0)
+        return;
+    free(*str);
+    *str = my_nb_str((int) nb);
+}
+
 void native_print(frog_t *frog, char **array)
 {
     char **tmp = malloc(sizeof(char *));
@@ -23,6 +36,7 @@ void native_print(frog_t *frog, char **array)
         addin_array(&tmp, array[n]);
     line = my_strjoin(tmp, " ");
     cal = calculus(line, frog);
+    better_number(&cal);
     my_printf("%s\n", cal != NULL ? cal : "\033[90mnull\033[m");
     free_ception(tmp);
     free(line);

@@ -12,11 +12,11 @@ void my_addstr(char **dest, char *add);
 char *my_newstr(char *text);
 void addin_array(char ***array, char *str);
 void free_ception(char **array);
-int my_arraylen(char **array);
+void my_cleanchar(char *str, char c);
 
 static int is_quote_word(char *str)
 {
-    return (str[0] == '"') + (str[my_strlen(str) - 1] == '"');
+    return (str[0] == '"' || str[my_strlen(str) - 1] == '"');
 }
 
 char *my_cutarray(char **array, int a, int b)
@@ -27,18 +27,8 @@ char *my_cutarray(char **array, int a, int b)
         my_addstr(&new, n != a ? " " : "");
         my_addstr(&new, array[n]);
     }
+    my_cleanchar(new, '"');
     return new;
-}
-
-static void the_last_word(int previous_index, char ***array, char ***new)
-{
-    char *str;
-
-    if (previous_index >= 0) {
-        str = my_cutarray(*array, previous_index, my_arraylen(*array));
-        addin_array(new, str);
-        free(str);
-    }
 }
 
 void ignore_quotes(char ***array)
@@ -49,18 +39,18 @@ void ignore_quotes(char ***array)
 
     new[0] = NULL;
     for (int n = 0; (*array)[n] != NULL; n ++) {
-        if (is_quote_word((*array)[n]) == 1 && previous_index >= 0) {
+        if (is_quote_word((*array)[n]) && previous_index >= 0) {
             str = my_cutarray(*array, previous_index, n);
             addin_array(&new, str);
             free(str);
             previous_index = -1;
             continue;
-        } if (is_quote_word((*array)[n]) == 1 && previous_index < 0)
+        } if (is_quote_word((*array)[n]) && previous_index < 0) {
             previous_index = n;
-        if (previous_index < 0 || is_quote_word((*array)[n]) == 2)
+        } if (previous_index < 0) {
             addin_array(&new, (*array)[n]);
+        }
     }
-    the_last_word(previous_index, array, &new);
     free_ception(*array);
     *array = new;
 }

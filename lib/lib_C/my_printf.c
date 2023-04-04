@@ -14,6 +14,7 @@ void my_addstr(char **dest, char *add);
 void my_addchar(char **dest, char c);
 int my_putstr(char *str);
 char *my_disparray(char **array);
+char *my_double_str(double num);
 
 static char *do_switch(const char *str, int *n, va_list ap)
 {
@@ -28,6 +29,8 @@ static char *do_switch(const char *str, int *n, va_list ap)
         char *c = my_newstr("");
         my_addchar(&c, va_arg(ap, int));
         return c;
+        case 'f':
+        return my_double_str(va_arg(ap, double));
         case 'a':
         return my_disparray(va_arg(ap, char **));
         case '%':
@@ -41,19 +44,19 @@ int my_printf(const char *str, ...)
 {
     char *final = my_newstr("");
     int len = 0;
-
+    char *tmp = NULL;
     va_list ap;
+
     va_start(ap, str);
     for (int n = 0; str[n] != '\0'; n ++) {
         if (str[n] == '%') {
-            char *tmp = do_switch(str, &n, ap);
+            tmp = do_switch(str, &n, ap);
             my_addstr(&final, tmp);
             free(tmp);
         } else
             my_addchar(&final, str[n]);
     }
     len = my_putstr(final);
-
     va_end(ap);
     free(final);
     return len;

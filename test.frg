@@ -1,12 +1,14 @@
 #!frog
 
-function test
-    print(bite)
+function test a b
+    
 end
 
-function main (ac, av)
-    InitScreen(800, 600, "Hello")
-    a = 69 + 1
-    print(a)
-    test()
+function main
+    a = 0
+
+    while a < 10 do
+        a = a + 0.5
+        print(a)
+    end
 end

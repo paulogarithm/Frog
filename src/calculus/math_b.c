@@ -10,18 +10,18 @@
 #include "polib.h"
 #include "frog.h"
 
-int get_numbervalue(char *str, frog_t *frog);
+double get_numbervalue(char *str, frog_t *frog);
 
 static char *process_calculus_b(char **array, int n, frog_t *frog)
 {
-    int a = get_numbervalue(array[n - 1], frog);
-    int b = get_numbervalue(array[n + 1], frog);
+    double a = get_numbervalue(array[n - 1], frog);
+    double b = get_numbervalue(array[n + 1], frog);
 
     switch (array[n][0]) {
         case '+':
-        return my_nb_str(a + b);
+        return my_double_str(a + b);
         case '-':
-        return my_nb_str(a - b);
+        return my_double_str(a - b);
 
         default:
         break;

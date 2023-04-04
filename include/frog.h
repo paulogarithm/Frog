@@ -12,14 +12,14 @@ enum type {
     null = 0,
     number,
     boolean,
-    string
+    string,
 };
 
 typedef struct {
     int type;
     char *name;
 
-    int number;
+    double number;
     int boolean;
     char *string;
 
