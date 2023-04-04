@@ -15,7 +15,7 @@ char *calculus(const char *line_const, frog_t *frog);
 void free_the_frog(frog_t *frog);
 void set_variable(frog_t *frog, char **line);
 
-void local_function(frog_t *frog, char *name);
+void local_function(frog_t *frog, char *name, char **array);
 void is_it_function(frog_t *frog, char *line_template);
 void native_condition(frog_t *frog, char **array_template, int *n);
 void native_while(frog_t *frog, char **array_template, int *n);
@@ -83,11 +83,20 @@ frog_t *setup_frog(char **av)
 int main(int ac, char **av)
 {
     frog_t *frog;
+    char **array = NULL;
+    char *str;
 
     if (ac < 2)
         return 69;
+    array = malloc(sizeof(char *));
+    array[0] = NULL;
+    str = my_nb_str(ac - 1);
     frog = setup_frog(av);
-    local_function(frog, "main");
+    addin_array(&array, str);
+    local_function(frog, "main", array);
+
+    free_ception(array);
+    free(str);
     free_the_frog(frog);
     return 0;
 }

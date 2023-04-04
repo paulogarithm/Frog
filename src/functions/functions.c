@@ -11,7 +11,7 @@
 #include "polib.h"
 
 int native_function(frog_t *frog, char *name, char **args);
-void local_function(frog_t *frog, char *name);
+void local_function(frog_t *frog, char *name, char **array);
 
 int find_function(char **array, char *name)
 {
@@ -44,7 +44,7 @@ void execute_function(frog_t *frog, char **array)
     if (native_function(frog, name, args))
         return free(name);
     old_function = frog->current_function;
-    local_function(frog, name);
+    local_function(frog, name, args);
     frog->current_function = old_function;
 
     free(name);
