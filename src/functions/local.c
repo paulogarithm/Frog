@@ -21,7 +21,7 @@ void create_var_arguments(frog_t *frog, char *line, char **args)
 
     crush_array(&array, 0);
     crush_array(&array, 0);
-    for (int n = 0; array[n] != NULL; n ++) {
+    for (int n = 0; array[n] != NULL && args[n] != NULL; n ++) {
         var_line = malloc(sizeof(char *));
         var_line[0] = NULL;
         addin_array(&var_line, array[n]);

@@ -28,8 +28,9 @@ SRC		= src/main.c\
 		\
 		$(FUN)functions.c\
 		$(FUN)native.c\
-		$(FUN)fun_local.c\
-		$(FUN)fun_print.c\
+		$(FUN)local.c\
+		$(FUN)nat_print.c\
+		$(FUN)nat_maths.c\
 
 ## ---------- ##
 

@@ -94,7 +94,6 @@ int main(int ac, char **av)
     frog = setup_frog(av);
     addin_array(&array, str);
     local_function(frog, "main", array);
-
     free_ception(array);
     free(str);
     free_the_frog(frog);
