@@ -1,0 +1,44 @@
+name: Compilation
+
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-*'
+
+env:
+  EXECUTABLES: "frog"
+
+jobs:
+  compilation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v3
+      - name: make
+        run: |
+          make;
+          if [ $? != 0 ]; then
+            echo "::error title=Build Failed::Can't make.";
+            exit 1;
+          fi;
+          make clean;
+          count=$(find . -type f -name \*.o | wc -l)
+          if [ $count -gt 0 ]; then
+            echo "::error title=Build Failed::Can't clean ($count .o files).";
+            exit 1;
+          fi;
+      - uses: actions/checkout@v3
+      - name: execs
+        run: |
+          make -s;
+          for i in ${EXECUTABLES[@]}; do
+            tmp=$(find $i 2>&1);
+            if (($? != 0)); then
+              echo "::error title=Build Failed::Can't find $i.";
+              exit 1;
+            fi
+          done
+          echo -e "\033[32mEnd exec check\033[m"
