@@ -57,7 +57,7 @@ bool frog_simulate(frog_t *frog, char *str)
         return false;
     free(frog->words);
     frog->words = new_words;
-    if (frog_process(frog))
+    if (not frog_process(frog))
         return false;
     free(frog->words);
     frog->words = old_words;
