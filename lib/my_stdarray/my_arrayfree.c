@@ -12,7 +12,7 @@ void my_arrayfree(char **array)
 {
     if (array == NULL)
         return;
-    for (int n = 0; array[n] != NULL; n ++)
+    for (int n = 0; array[n] != NULL; ++n)
         free(array[n]);
     free(array);
 }

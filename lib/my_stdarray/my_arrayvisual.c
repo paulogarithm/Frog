@@ -15,8 +15,11 @@ char *my_strjoin(const char **array, const char *join);;
 char *my_arrayform(const char **array)
 {
     char *ret = NULL;
-    char *str = my_strjoin(array, "', '");
+    char *str = NULL;
 
+    if (array == NULL)
+        return NULL;
+    str = my_strjoin(array, "', '");
     ret = my_superstrcat(3, "['", str, "']");
     free(str);
     return ret;

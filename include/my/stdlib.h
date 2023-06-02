@@ -8,10 +8,16 @@
 #ifndef MY_STDLIB_H_
     #define MY_STDLIB_H_
 
-    #include <stdbool.h>
+    #include "common.h"
 
-    #define MAX(a, b) (((int)a >= (int)b) ? (int)a : (int)b)
-    #define MIN(a, b) (((int)a <= (int)b) ? (int)a : (int)b)
+typedef struct s_meta meta_t;
+
+struct s_meta {
+    bool freed;
+    unsigned long size;
+    struct s_meta *next;
+    char ptr[1];
+};
 
 char *my_ftoa(const double num);
 char *my_itoa(const int num);

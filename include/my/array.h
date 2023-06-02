@@ -8,12 +8,14 @@
 #ifndef MY_STDARRAY_H_
     #define MY_STDARRAY_H_
 
+    #include "common.h"
+
 void my_arrayadd(char ***array, const char *str);
 void my_arraypop(char ***array, const unsigned long pos);
 void my_arraysuperpop
 (char ***array, const unsigned long p, const unsigned long s);
 long int my_arrayindex(const char **array, const char *str);
-char **my_arraycat(char **a, char **b);
+void my_arraycat(char ***a, const char **b);
 void my_arrayfree(char **array);
 char *my_arrayform(const char **array);
 unsigned long my_arraydisp(const char **array);

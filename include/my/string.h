@@ -8,7 +8,7 @@
 #ifndef MY_STRING_H_
     #define MY_STRING_H_
 
-    #include <stdbool.h>
+    #include "common.h"
 
 void my_addstr(char **a, const char *b);
 void my_addchar(char **str, char c);

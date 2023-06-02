@@ -50,6 +50,7 @@ int my_printf(const char *str, ...)
     for (int n = 0; str[n] != '\0'; n ++) {
         if (str[n] == '%') {
             tmp = do_switch(str, &n, ap);
+            tmp = (tmp == NULL) ? my_newstr("null") : tmp;
             my_addstr(&final, tmp);
             free(tmp);
         } else

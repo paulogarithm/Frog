@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2023
+** Paul Parisot PROJECT, 2023
 ** sh_final
 ** File description:
 ** fun_frog
@@ -16,7 +16,7 @@ char *frog_arithmetics(frog_t *frog, char *str);
 bool frog_isfunction(frog_t *frog, size_t *n);
 
 bool frog_create_var(frog_t *frog, unsigned long *n);
-bool frog_for_loop(frog_t *frog, size_t *n);
+bool frog_foreach_loop(frog_t *frog, size_t *n);
 
 short frog_tabpos_actions
 (const char *str, const tabfrog_actions_t *TAB_GROF);

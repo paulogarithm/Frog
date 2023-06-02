@@ -9,12 +9,6 @@
 
 #include "my.h"
 
-void my_arraycat(char ***a, char **b)
-{
-    for (int n = 0; b[n] != NULL; n++)
-        my_arrayadd(a, b[n]);
-}
-
 int my_arrayindex(char **array, char *str)
 {
     for (int n = 0; array[n] != NULL; n++)

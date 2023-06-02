@@ -8,7 +8,7 @@
 #ifndef MY_STDIO_H_
     #define MY_STDIO_H_
 
-    #include <stdbool.h>
+    #include "common.h"
 
     #define SRL_CREATE 1
     #define SRL_OVRWRT 2

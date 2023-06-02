@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2023
+** Paul Parisot PROJECT, 2023
 ** sh_final
 ** File description:
 ** frog
