@@ -13,7 +13,7 @@ SRCFILES 	= src/main.c\
 			src/usefull/keyvalue.c\
 			src/frog_arithmetics.c\
 			src/frog_builtins.c\
-			src/frog_for_loop.c\
+			src/frog_foreach_loop.c\
 			src/frog_function.c\
 			src/frog_operations_usefull.c\
 			src/frog_operations.c\
@@ -27,7 +27,6 @@ SRCFILES 	= src/main.c\
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
 CC			?= gcc
-RM			= rm -f
 
 SRCOBJ      = $(SRCFILES:.c=.o)
 CFLAGS		= -Wall -Wextra

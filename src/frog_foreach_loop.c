@@ -77,7 +77,7 @@ static int *check_cond(char **cond)
     return ret;
 }
 
-bool frog_for_loop(frog_t *g, size_t *n)
+bool frog_foreach_loop(frog_t *g, size_t *n)
 {
     char **cond = get_cond(g, n);
     char *actions = get_action(g, n, cond);

@@ -16,7 +16,7 @@
 
 static const tabfrog_actions_t TAB_GROF[] = {
     {"exp", frog_create_var},
-    {"for", frog_for_loop},
+    {"foreach", frog_foreach_loop},
     {NULL, NULL}
 };
 

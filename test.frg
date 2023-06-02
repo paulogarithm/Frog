@@ -1,2 +1,3 @@
-exp a = 1
-print(a)
+foreach a = 1, 10 do
+    print("test")
+end
